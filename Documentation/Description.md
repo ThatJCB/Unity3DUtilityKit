@@ -18,5 +18,4 @@ Additions
 
 I'll add more as I code things that may be useful.
 
-Repository URL:
-https://github.com/ThatJCB/Unity3DUtilityKit
+
