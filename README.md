@@ -9,6 +9,7 @@ Property Attributes
 These are Inspector tags that change the behaviour of properties in the inspector.
 
   * ToolTips that work for nearly all Unity property types.
+  * ToolBox that adds a description in the inspector panel.
   * Int Ranges that add a slider to both integers and floats using whole number steps.
   * Descriptions that add a block of text in the inspector pane.
 There are others too.
