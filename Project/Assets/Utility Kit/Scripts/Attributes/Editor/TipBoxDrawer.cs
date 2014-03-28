@@ -27,14 +27,21 @@ public class TipBoxDrawer : PropertyDrawer
 
 		float baseSize = ToolTipDrawer.GetOriginalHeight (prop, label);
 
-		Vector2 helpSize = EditorStyles.label.CalcSize (new GUIContent(source.TipText));
+		Vector2 helpSize = EditorStyles.label.CalcSize (new GUIContent(source.BoxedText));
 		return baseSize + helpSize.y + spacing;
 	}
 	
 
     public override void OnGUI(Rect position, SerializedProperty property, GUIContent label)
     {
-		Vector2 helpSize = EditorStyles.label.CalcSize (new GUIContent(source.TipText));
+		// Must reset the tip otherwise all labels get the same tooltip displayed!
+		string previousTip = label.tooltip;
+		if (!string.IsNullOrEmpty (source.TipText))
+		{
+			label.tooltip = source.TipText;
+		}
+
+		Vector2 helpSize = EditorStyles.label.CalcSize (new GUIContent(source.BoxedText));
 
 		// Adjust the size of the box to fit the text and centre.
 		Rect boxPosition = position;
@@ -71,7 +78,10 @@ public class TipBoxDrawer : PropertyDrawer
 		// Display the default fields for this property
 		EditorGUI.PropertyField (textPosition, property, label, true);
 
-		EditorGUI.HelpBox (helpPosition, source.TipText, MessageType.None);
+		EditorGUI.HelpBox (helpPosition, source.BoxedText, MessageType.None);
+
+		// Must reset the tip otherwise all labels get the same tooltip displayed!
+		label.tooltip = previousTip;
 	}
 
 

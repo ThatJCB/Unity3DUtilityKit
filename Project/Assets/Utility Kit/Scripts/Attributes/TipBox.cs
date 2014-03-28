@@ -24,6 +24,14 @@ using System.Collections.Generic;
 /// </summary>
 public class TipBox : PropertyAttribute
 {
+	/// <summary>
+	/// The text to be drawn in a fixed position box.
+	/// </summary>
+	public string BoxedText = "";
+
+	/// <summary>
+	/// The text to show in the floating tool tip.
+	/// </summary>
 	public string TipText = "";
 
     public string[] list;
@@ -36,17 +44,42 @@ public class TipBox : PropertyAttribute
     public TipBox(string message)
     {
 		ShowTipAbove = false;
-		TipText = message;
+		BoxedText = message;
+		TipText = "";
     }
 
+	/// <summary>
+	/// Display a text box below the value and
+	/// include a floating tool tip.
+	/// </summary>
+	public TipBox(string message, string toolTip)
+	{
+		ShowTipAbove = false;
+		BoxedText = message;
+		TipText = toolTip;
+	}
+	
 	/// <summary>
 	/// Display a text box above the value if set to true.
 	/// </summary>
 	public TipBox(string message, bool showTextAbove)
 	{
 		ShowTipAbove = showTextAbove;
-		TipText = message;
+		BoxedText = message;
+		TipText = "";
 	}
+
+	/// <summary>
+	/// Display a text box above the value if set to true and
+	/// include a floating tool tip.
+	/// </summary>
+	public TipBox(string message, string toolTip, bool showTextAbove)
+	{
+		ShowTipAbove = showTextAbove;
+		BoxedText = message;
+		TipText = toolTip;
+	}
+	
 }
 
 
