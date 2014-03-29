@@ -2,14 +2,8 @@ using UnityEditor;
 using UnityEngine;
 using System;
 
-// TODO:
-// This will not position properly for Bounds and Rect types.
-// The repositioning above and below needs to take in to account the extra lines.
-
 /// <summary>
-/// Display a text box under the value.
-/// 
-/// NOTE: At the moment this will not work properly with Bounds and Rect types.
+/// Display a text box above or below the value.
 /// </summary>
 [CustomPropertyDrawer(typeof(TipBox))]
 public class TipBoxDrawer : PropertyDrawer

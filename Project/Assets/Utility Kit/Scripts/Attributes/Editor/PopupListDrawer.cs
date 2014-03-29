@@ -16,6 +16,11 @@ public class PopupListDrawer : PropertyDrawer
 
     public override void OnGUI(Rect position, SerializedProperty property, GUIContent label)
     {
+		if (!ValidateType (position, property, label))
+		{
+			return;
+		}
+		
         // Checks to see what is the type of the provided values and acts accordingly.
         if (source.variableType == typeof(int[]))
         {
@@ -65,4 +70,56 @@ public class PopupListDrawer : PropertyDrawer
             EditorGUI.LabelField(position, "Invalid List Type!");
         }
     }
+
+	///////////////////////////////////////////////////////////////////////////////////////////////
+	//
+	#region Validation
+	//
+	private bool oneTime = false;
+	/// <summary>
+	/// Validates the type that the drawer is applied to.
+	/// If not valid it will draw the default field for this type
+	/// and log an error.
+	/// 
+	/// Returns false if the type is not valid for this class.
+	/// Use that to stop the rest of the GUI drawing.
+	/// 
+	/// Usage:
+	/// 
+	/// void OnGUI(...)
+	/// }
+	/// 	if (!ValidateType (position, property, label))
+	/// 	{
+	/// 		return;
+	/// 	}
+	/// 
+	/// 	// Draw stuff here ...
+	/// }
+	///
+	/// </summary>
+	private bool ValidateType(Rect position, SerializedProperty property, GUIContent label)
+	{
+		if (property.propertyType == SerializedPropertyType.Integer ||
+		    property.propertyType == SerializedPropertyType.Float ||
+		    property.propertyType == SerializedPropertyType.String)
+		{
+			return true;
+		}
+
+		// Display the default fields for this property
+		EditorGUI.PropertyField (position, property, label, true);
+		
+		if (!oneTime)
+		{
+			oneTime = true;
+			Debug.LogWarning(this.GetType ().ToString() + " only works with integer, float and string properties!");
+		}
+		
+		return false;
+	}
+	//
+	#endregion
+	//
+	///////////////////////////////////////////////////////////////////////////////////////////////
+
 }

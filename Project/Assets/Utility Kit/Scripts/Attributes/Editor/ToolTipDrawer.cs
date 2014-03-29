@@ -3,7 +3,7 @@ using UnityEngine;
 using System;
 
 /// <summary>
-/// Display a text box under the value.
+/// Display a tool tip when the mouse is over the label.
 /// </summary>
 [CustomPropertyDrawer(typeof(ToolTip))]
 public class ToolTipDrawer : PropertyDrawer

@@ -39,7 +39,7 @@ namespace UtilityKit
 		[ToolTip("Enum Tip")]
 		public Fruit EnumExample = Fruit.Apple;
 
-		[ToolTip("Float Tip")]
+		[IntRange(1, 16, "Float slider that\nonly accepts round numbers")]
 		public float FloatExample = 2.5f;
 
 		[ToolTip("Gradient Tip")]
@@ -57,7 +57,7 @@ namespace UtilityKit
 		[ToolTip("String Tip")]
 		public string StringExample = "Test";
 
-		[Divider(false, "Vector Tip which should be follow by a divider\nbut the line is unreliable!")]
+		[Divider(false, "Unaltered Properties", "Vector Tip follow by a divider")]
 		public Vector3 VectorExample;
 
 		///////////////////////////////////////////////////////////////////////////
@@ -82,7 +82,6 @@ namespace UtilityKit
 		void OnGUI()
 		{
 			const int textWidth = 300;
-			const int columnWidth = 300;
 
 			float lineHeight = style.lineHeight;
 
