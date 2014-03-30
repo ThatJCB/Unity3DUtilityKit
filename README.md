@@ -11,13 +11,15 @@ These are Inspector tags that change the behaviour of properties in the inspecto
   * ToolTips that work for nearly all Unity property types.
   * ToolBox that adds a description in the inspector panel.
   * Int Ranges that add a slider to both integers and floats using whole number steps.
-  * Descriptions that add a block of text in the inspector pane.
+  * Divider that draws a line across the inspector pane and optionally adds a heading
+  * Scene name list that shows the scenes included in the build settings.  
+  
 There are others too.
 
 Additions
 ---------
 
-I'll add more as I code things that may be useful.
+I'll add more stuff as I code things that may be useful.
 
 References
 ----------
