@@ -21,6 +21,12 @@ Additions
 
 I'll add more stuff as I code things that may be useful.
 
+Licence
+-------
+
+There is a licence file included with the documentation containing the legal stuff but 
+in summary, use it for whatever you want but you can't blame me if it does not work.
+
 References
 ----------
 
