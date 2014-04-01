@@ -35,7 +35,7 @@ public class SceneNameListDrawer : PropertyDrawer
 
 		// Must reset the tip otherwise all labels get the same tooltip displayed!
 		string previousTip = label.tooltip;
-		label.tooltip = SceneNameList.ToolTip;
+		label.tooltip = source.ToolTip;
 
 	    EditorGUI.BeginChangeCheck();
 

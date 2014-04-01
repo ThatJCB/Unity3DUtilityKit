@@ -22,7 +22,15 @@ using System.Collections.Generic;
 /// </summary>
 public class SceneNameList : PropertyAttribute
 {
-	public const string ToolTip = "Press the small button to refresh the scene list";
+	/// <summary>
+	/// The built in tip always added as a reminder of the refresh button.
+	/// </summary>
+	public const string RefreshTip = "Press the small button to refresh the scene list";
+
+	/// <summary>
+	/// The user selected tool tip.
+	/// </summary>
+	public string ToolTip = "";
 
     public string[] ValidList;
 	// Using GUIContent so we can add tool tips
@@ -35,6 +43,7 @@ public class SceneNameList : PropertyAttribute
 	/// </summary>
     public SceneNameList()
     {
+		ToolTip = RefreshTip;
 		Required = false;
 		RefreshLists ();
 	}
@@ -44,10 +53,21 @@ public class SceneNameList : PropertyAttribute
 	/// </summary>
 	public SceneNameList(bool requiresAnEntry)
 	{
+		ToolTip = RefreshTip;
 		Required = requiresAnEntry;
 		RefreshLists ();
 	}
 
+	/// <summary>
+	/// Shows a list of scene names that are in the build settings.
+	/// </summary>
+	public SceneNameList(bool requiresAnEntry, string toolTipText)
+	{
+		ToolTip = toolTipText + "\n" + RefreshTip;
+		Required = requiresAnEntry;
+		RefreshLists ();
+	}
+	
 	public void RefreshLists()
 	{
 		ValidList = ReadSceneList (Required);
@@ -78,7 +98,7 @@ public class SceneNameList : PropertyAttribute
 
 		for (int i = 0; i < temp.Count; i++)
 		{
-			DisplayList[i] = new GUIContent(temp[i], ToolTip);
+			DisplayList[i] = new GUIContent(temp[i], RefreshTip);
 		}
 	}
 
